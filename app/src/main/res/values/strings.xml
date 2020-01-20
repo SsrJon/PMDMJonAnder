@@ -11,5 +11,11 @@
     <string name="texto5">El insituto, fuente de gozo</string>
     <string name="texto6">Arbustos grandes.</string>
 
+    <string name="latitud">Latitud</string>
+    <string name="longitud">Longitud</string>
+    <string name="nombre_marcador">Marcador</string>
+
+    <string name="vacio">Hay campos vacíos</string>
+
 
 </resources>

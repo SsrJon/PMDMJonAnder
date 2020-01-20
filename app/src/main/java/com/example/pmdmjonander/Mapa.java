@@ -32,6 +32,8 @@ public class Mapa extends AppCompatActivity implements
     MarkerOptions marcador = new MarkerOptions();
     private MapboxMap mapboxMap;
     private MapView mapView;
+    private String nombreMarcador, longitud, latitud;
+    private Double longitudD, latitudD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,19 +45,36 @@ public class Mapa extends AppCompatActivity implements
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
 
+
     }
 
     @Override
     public void onMapReady(@NonNull final MapboxMap mapboxMap) {
 
+
+
+
+        nombreMarcador=getIntent().getStringExtra("marcador");
+        longitud=getIntent().getStringExtra("longitud");
+        latitud=getIntent().getStringExtra("latitud");
+
+
+        System.out.println(nombreMarcador);
+        System.out.println(longitud);
+        System.out.println(latitud);
+
+
+        longitudD=Double.parseDouble(longitud);
+        latitudD=Double.parseDouble(latitud);
+
         Mapa.this.mapboxMap = mapboxMap;
 
         //Se añade el marcador
-        marcador.title("punto");
+        marcador.title(nombreMarcador);
         IconFactory iconFactoryMarcador = IconFactory.getInstance(Mapa.this);
         Icon iconMarcador = iconFactoryMarcador.fromResource(R.drawable.marker);
         marcador.icon(iconMarcador);
-        marcador.position(new LatLng(43.257306, -2.903710));
+        marcador.position(new LatLng(latitudD, longitudD));
         mapboxMap.addMarker(marcador);
 
         mapboxMap.setOnMarkerClickListener(new MapboxMap.OnMarkerClickListener() {
