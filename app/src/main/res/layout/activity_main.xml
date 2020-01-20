@@ -7,24 +7,14 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/buttonMarcador"
+        android:id="@+id/buttonAñadir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/marcador"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.625"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.368" />
-
-    <Button
-        android:id="@+id/buttonMapa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/mapa"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.546" />
+        app:layout_constraintVertical_bias="0.809" />
 </androidx.constraintlayout.widget.ConstraintLayout>

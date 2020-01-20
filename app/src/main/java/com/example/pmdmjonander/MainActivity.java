@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnMapa, btnMarcador;
+    private Button btnMapa;
 
 
     @Override
@@ -17,8 +17,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnMapa=findViewById(R.id.buttonMapa);
-        btnMarcador=findViewById(R.id.buttonMarcador);
+        btnMapa=findViewById(R.id.buttonAñadir);
+
 
 
 
@@ -33,15 +33,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        btnMarcador.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent marcador = new Intent(MainActivity.this, Marcador.class);
-                startActivity(marcador);
-            }
-        });
 
     }
 }

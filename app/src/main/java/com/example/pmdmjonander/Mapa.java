@@ -3,6 +3,7 @@ package com.example.pmdmjonander;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import com.mapbox.android.core.permissions.PermissionsListener;
@@ -27,12 +28,10 @@ import java.util.List;
 public class Mapa extends AppCompatActivity implements
         OnMapReadyCallback, PermissionsListener {
 
-
     private PermissionsManager permissionsManager;
     MarkerOptions marcador = new MarkerOptions();
     private MapboxMap mapboxMap;
     private MapView mapView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +39,9 @@ public class Mapa extends AppCompatActivity implements
         Mapbox.getInstance(this, getString(R.string.mapbox_access_token));
         setContentView(R.layout.activity_mapa);
 
-
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
-
-
 
     }
 
@@ -62,12 +58,15 @@ public class Mapa extends AppCompatActivity implements
         marcador.position(new LatLng(43.257306, -2.903710));
         mapboxMap.addMarker(marcador);
 
-
         mapboxMap.setOnMarkerClickListener(new MapboxMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(@NonNull Marker marker) {
 
+                //Audio que se ejecuta al hacer click
+                MediaPlayer mediaPlayer = MediaPlayer.create(Mapa.this, R.raw.misc021);
+                mediaPlayer.start();
 
+                //Abre el activity con la imagen
                 Intent marcador = new Intent(Mapa.this, Marcador.class);
                 startActivity(marcador);
 
@@ -84,15 +83,11 @@ public class Mapa extends AppCompatActivity implements
                 //Ubicación actual
                 enableLocationComponent(style);
 
-
             }
         });
 
 
-
-
     }
-
 
     //Ubicacion actual del dispositivo
     private void enableLocationComponent(@NonNull Style loadedMapStyle) {
@@ -111,7 +106,6 @@ public class Mapa extends AppCompatActivity implements
 
         }
     }
-
 
     @Override
     public void onResume() {
