@@ -14,6 +14,9 @@ public class MainActivity extends AppCompatActivity {
     private Button btnAñadir;
     private EditText etMarcador, etLongitud, etLatitud;
     private String marcador, longitud, latitud;
+    private Double longitudD, latitudD;
+
+
 
 
     @Override
@@ -33,10 +36,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                longitudD=Double.parseDouble(etLongitud.getText().toString());
+                latitudD=Double.parseDouble(etLatitud.getText().toString());
 
-                if (etMarcador.getText().toString().equals("") ||etLongitud.getText().toString().equals("")|| etLatitud.getText().toString().equals("")){
-                    Toast.makeText(MainActivity.this, R.string.vacio, Toast.LENGTH_SHORT).show();
-                } else{
+                if (longitudD< -180.0 || longitudD >180.0 ||latitudD< -90.0 || latitudD >90.0){
+
+                    Toast.makeText(MainActivity.this, "Coordenadas incorrectas", Toast.LENGTH_SHORT).show();
+                }
+                else{
+
                     Intent mapa = new Intent(MainActivity.this, Mapa.class);
 
 
@@ -55,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
 
                     startActivity(mapa);
                 }
+
+
 
 
             }
