@@ -59,8 +59,6 @@ public class MainActivity extends AppCompatActivity {
                     latitud  = etLatitud.getText().toString();
                     mapa.putExtra("latitud", latitud  );
 
-
-
                     startActivity(mapa);
                 }
 

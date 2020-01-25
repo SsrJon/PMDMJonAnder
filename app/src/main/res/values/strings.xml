@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PMDMJonAnder</string>
+    <string name="app_name">Mapa</string>
     <string name="marcador">Añadir marcador</string>
     <string name="mapa">Abrir mapa</string>
     <string name="mapbox_access_token">pk.eyJ1Ijoic3Jqb24iLCJhIjoiY2szMzMydTduMDR0ZzNkcGpoMTlseXlrdSJ9.FVx9_XrgYlZcFlyHkHRO_Q</string>
