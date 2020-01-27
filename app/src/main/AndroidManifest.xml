@@ -16,6 +16,7 @@
         <activity android:name=".Marcador"
             android:screenOrientation="portrait"/>
         <activity android:name=".Mapa"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".MainActivity"
             android:screenOrientation="portrait">

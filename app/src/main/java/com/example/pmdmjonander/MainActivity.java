@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 longitudD=Double.parseDouble(etLongitud.getText().toString());
                 latitudD=Double.parseDouble(etLatitud.getText().toString());
 
+                //Comprueba si la longitud y latitud introducidas son validas
                 if (longitudD< -180.0 || longitudD >180.0 ||latitudD< -90.0 || latitudD >90.0){
 
                     Toast.makeText(MainActivity.this, "Coordenadas incorrectas", Toast.LENGTH_SHORT).show();
@@ -46,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
                 else{
 
                     Intent mapa = new Intent(MainActivity.this, Mapa.class);
-
 
                     System.out.println(etMarcador.getText().toString());
                     System.out.println(etLongitud.getText().toString());

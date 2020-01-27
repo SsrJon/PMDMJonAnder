@@ -2,6 +2,7 @@ package com.example.pmdmjonander;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -44,6 +45,8 @@ public class Mapa extends AppCompatActivity implements
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
+        //Añade un botón para ir al inicio
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
     }
@@ -51,19 +54,17 @@ public class Mapa extends AppCompatActivity implements
     @Override
     public void onMapReady(@NonNull final MapboxMap mapboxMap) {
 
-
-
-
+        //Recoge los datos de la pantalla anterior
         nombreMarcador=getIntent().getStringExtra("marcador");
         longitud=getIntent().getStringExtra("longitud");
         latitud=getIntent().getStringExtra("latitud");
 
 
-        System.out.println(nombreMarcador);
-        System.out.println(longitud);
-        System.out.println(latitud);
+        //System.out.println(nombreMarcador);
+        //System.out.println(longitud);
+        //System.out.println(latitud);
 
-
+        //Pasa la latitud y longitud a Double
         longitudD=Double.parseDouble(longitud);
         latitudD=Double.parseDouble(latitud);
 
@@ -77,6 +78,7 @@ public class Mapa extends AppCompatActivity implements
         marcador.position(new LatLng(latitudD, longitudD));
         mapboxMap.addMarker(marcador);
 
+        //Listener del marcador
         mapboxMap.setOnMarkerClickListener(new MapboxMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(@NonNull Marker marker) {
@@ -87,6 +89,12 @@ public class Mapa extends AppCompatActivity implements
 
                 //Abre el activity con la imagen
                 Intent marcador = new Intent(Mapa.this, Marcador.class);
+                String marcadorM  = nombreMarcador;
+                marcador.putExtra("marcadorM", marcadorM );
+                String longitudM  = getIntent().getStringExtra("longitud");
+                marcador.putExtra("longitudM", longitudM );
+                String latitudM  = getIntent().getStringExtra("latitud");
+                marcador.putExtra("latitudM", latitudM  );
                 startActivity(marcador);
 
                 return false;
