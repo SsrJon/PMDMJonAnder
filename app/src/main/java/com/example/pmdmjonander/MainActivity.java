@@ -36,31 +36,46 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                longitudD=Double.parseDouble(etLongitud.getText().toString());
-                latitudD=Double.parseDouble(etLatitud.getText().toString());
 
-                //Comprueba si la longitud y latitud introducidas son validas
-                if (longitudD< -180.0 || longitudD >180.0 ||latitudD< -90.0 || latitudD >90.0){
+                if (etLatitud.getText().toString().equals("")||etLongitud.getText().toString().equals("")||
+                        etMarcador.getText().toString().equals("")){
+
+                    Toast.makeText(MainActivity.this, "Hay campos vacios", Toast.LENGTH_SHORT).show();
+                }else if (etLatitud.getText().toString().equals(".")||etLongitud.getText().toString().equals(".")||
+                        etLatitud.getText().toString().equals("-")||etLongitud.getText().toString().equals("-")||
+                        etLatitud.getText().toString().equals("-.")||etLongitud.getText().toString().equals("-.")){
 
                     Toast.makeText(MainActivity.this, "Coordenadas incorrectas", Toast.LENGTH_SHORT).show();
                 }
                 else{
+                    longitudD=Double.parseDouble(etLongitud.getText().toString());
+                    latitudD=Double.parseDouble(etLatitud.getText().toString());
 
-                    Intent mapa = new Intent(MainActivity.this, Mapa.class);
+                    //Comprueba si la longitud y latitud introducidas son validas
+                    if (longitudD< -180.0 || longitudD >180.0 ||latitudD< -90.0 || latitudD >90.0){
 
-                    System.out.println(etMarcador.getText().toString());
-                    System.out.println(etLongitud.getText().toString());
-                    System.out.println(etLatitud.getText().toString());
+                        Toast.makeText(MainActivity.this, "Coordenadas incorrectas", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
 
-                    marcador  = etMarcador.getText().toString();
-                    mapa.putExtra("marcador", marcador );
-                    longitud  = etLongitud.getText().toString();
-                    mapa.putExtra("longitud", longitud );
-                    latitud  = etLatitud.getText().toString();
-                    mapa.putExtra("latitud", latitud  );
+                        Intent mapa = new Intent(MainActivity.this, Mapa.class);
 
-                    startActivity(mapa);
+                        System.out.println(etMarcador.getText().toString());
+                        System.out.println(etLongitud.getText().toString());
+                        System.out.println(etLatitud.getText().toString());
+
+                        marcador  = etMarcador.getText().toString();
+                        mapa.putExtra("marcador", marcador );
+                        longitud  = etLongitud.getText().toString();
+                        mapa.putExtra("longitud", longitud );
+                        latitud  = etLatitud.getText().toString();
+                        mapa.putExtra("latitud", latitud  );
+
+                        startActivity(mapa);
+                    }
                 }
+
+
 
 
 
